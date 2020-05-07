@@ -18,3 +18,50 @@ TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
 }
+
+TEST(PiezasTest, pieceAtBlank)
+{
+	Piezas testPiezas;
+	ASSERT_EQUAL(testPiezas.pieceAt(0, 0), Blank);
+}
+
+TEST(PiezasTest, pieceAtIllegalRowUnder)
+{
+	Piezas testPiezas;
+	ASSERT_EQUAL(testPiezas.pieceAt(-1, 0), Invalid);
+}
+
+TEST(PiezasTest, pieceAtIllegalRowOver)
+{
+	Piezas testPiezas;
+	ASSERT_EQUAL(testPiezas.pieceAt(3, 0), Invalid);
+}
+
+TEST(PiezasTest, pieceAtIllegalColumnUnder)
+{
+	Piezas testPiezas;
+	ASSERT_EQUAL(testPiezas.pieceAt(0, -1), Invalid);
+}
+
+TEST(PiezasTest, pieceAtIllegalColumnOver)
+{
+	Piezas testPiezas;
+	ASSERT_EQUAL(testPiezas.pieceAt(0, 4), Invalid);
+}
+
+TEST(PiezasTest, constructorEmptyBoard)
+{
+	Piezas testPiezas;
+	bool allBlank = true;
+	int rows = 3;
+	int columns = 4;
+	for (unsigned int i = 0; i < rows; i++) {
+		for (unsigned int j = 0; j < columns; j++) {
+			if (testPiezas.pieceAt(i, j) != Blank) {
+				allBlank = false;
+				break;
+			}
+		}
+	}
+	ASSERT_TRUE(allBlank);
+}

@@ -22,6 +22,15 @@
 **/
 Piezas::Piezas()
 {
+    for (unsigned int i = 0; i < 3; i++) {
+        std::vector<Piece> tempRow;
+        for (unsigned int j = 0; j < 4; j++) {
+            tempRow.push_back(Blank);
+        }
+        board.push_back(tempRow);
+    }
+
+    turn = X;
 }
 
 /**
@@ -51,7 +60,10 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+    if (row > board.size() - 1 || row < 0 || column > board[0].size() - 1 || column < 0) {
+        return Invalid;
+    }
+    return board[row][column];
 }
 
 /**
