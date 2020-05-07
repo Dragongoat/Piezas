@@ -171,5 +171,5 @@ TEST(PiezasTest, gameStateGameNotOver)
 {
 	Piezas testPiezas;
 	testPiezas.dropPiece(0);
-	ASSER_EQ(testPiezas.gameState(), Invalid);
+	ASSERT_EQ(testPiezas.gameState(), Invalid);
 }
