@@ -1,5 +1,9 @@
 # Piezas
 
+[![Build Status](https://travis-ci.org/Dragongoat/Piezas.svg?branch=master)](https://travis-ci.org/Dragongoat/Piezas)
+
+[![Coverage Status](https://coveralls.io/repos/github/Dragongoat/Piezas/badge.svg?branch=master)](https://coveralls.io/github/Dragongoat/Piezas?branch=master)
+
 ## Associated Enumerated Types
 `Piece` has four possible values: `X`,`O`,`Invalid`, and `Blank`
 
