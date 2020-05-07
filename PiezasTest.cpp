@@ -148,6 +148,27 @@ TEST(PiezasTest, dropPieceThirdRowBoardCheck)
 	ASSERT_EQ(testPiezas.pieceAt(2, 0), X);
 }
 
+TEST(PiezasTest, resetBoardWithPieces)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.reset();
+	bool allBlank = true;
+	int rows = 3;
+	int columns = 4;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			if (testPiezas.pieceAt(i, j) != Blank) {
+				allBlank = false;
+				break;
+			}
+		}
+	}
+	ASSERT_TRUE(allBlank);
+}
+
 TEST(PiezasTest, dropPieceOverflow)
 {
 	Piezas testPiezas;

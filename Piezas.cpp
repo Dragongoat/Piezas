@@ -110,17 +110,12 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-    bool noneBlank = true;
 	for (unsigned int i = 0; i < board.size(); i++) {
 		for (unsigned int j = 0; j < board[i].size(); j++) {
 			if (pieceAt(i, j) == Blank) {
-				noneBlank = false;
-				break;
+				return Invalid;
 			}
 		}
 	}
-    if (!noneBlank) {
-        return Invalid;
-    }
     return Blank;
 }
