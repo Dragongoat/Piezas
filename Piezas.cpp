@@ -1,5 +1,6 @@
 #include "Piezas.h"
 #include <vector>
+#include <algorithm>
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -112,10 +113,45 @@ Piece Piezas::gameState()
 {
 	for (unsigned int i = 0; i < board.size(); i++) {
 		for (unsigned int j = 0; j < board[i].size(); j++) {
-			if (pieceAt(i, j) == Blank) {
+			if (pieceAt(i, j) != X && pieceAt(i, j) != O) {
 				return Invalid;
 			}
 		}
 	}
-    return Blank;
+    Piece winner = Blank;
+    int longest = 0;
+    for (unsigned int row = 0; row < board.size(); row++) {
+        for (unsigned int column = 0; column < board[row].size(); column++) {
+            Piece cur = pieceAt(row, column);
+            // Check above
+            int curVertical = 1;
+            for (unsigned int i = row; i < board.size(); i++) {
+                if (pieceAt(i, column) == cur) {
+                    curVertical++;
+                }
+                else {
+                    break;
+                }
+            }
+            // Check right
+            int curHorizontal = 1;
+            for (unsigned int i = column; i < board[row].size(); i++) {
+                if (pieceAt(row, i) == cur) {
+                    curHorizontal++;
+                }
+                else {
+                    break;
+                }
+            }
+            int curLongest = std::max(curHorizontal, curVertical);
+            if (curLongest > longest) {
+                longest = curLongest;
+                winner = cur;
+            }
+            else if (curLongest == longest) {
+                winner = Blank;
+            }
+        }
+    }
+    return winner;
 }

@@ -194,3 +194,195 @@ TEST(PiezasTest, gameStateGameNotOver)
 	testPiezas.dropPiece(0);
 	ASSERT_EQ(testPiezas.gameState(), Invalid);
 }
+
+// Winner vertical X
+/*
+ * [X] [O] [X] [O]
+ * [X] [X] [O] [O]
+ * [X] [O] [O] [X]
+ */
+TEST(PiezasTest, winnerVerticalX)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	ASSERT_EQ(testPiezas.gameState(), X);
+}
+
+// Winner vertical O
+/*
+ * [X] [O] [O] [X]
+ * [O] [O] [X] [X]
+ * [X] [O] [X] [O]
+ */
+TEST(PiezasTest, winnerVerticalO)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(2);
+	ASSERT_EQ(testPiezas.gameState(), O);
+}
+
+// Winner horizontal X
+/*
+ * [O] [O] [X] [O]
+ * [O] [O] [X] [O]
+ * [X] [X] [X] [X]
+ */
+TEST(PiezasTest, winnerHorizontalX)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	ASSERT_EQ(testPiezas.gameState(), X);
+}
+
+// Winner horizontal O
+/*
+ * [X] [O] [X] [X]
+ * [O] [O] [O] [O]
+ * [X] [X] [X] [O]
+ */
+TEST(PiezasTest, winnerHorizontalO)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	ASSERT_EQ(testPiezas.gameState(), O);
+}
+
+// Tie vertical x vertical
+/*
+ * [X] [O] [X] [O]
+ * [X] [O] [O] [X]
+ * [X] [O] [X] [O]
+ */
+TEST(PiezasTest, tieVerticalVsVertical)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	ASSERT_EQ(testPiezas.gameState(), Blank);
+}
+
+// Tie vertical x horizontal
+/*
+ * [X] [O] [X] [X]
+ * [X] [X] [O] [O]
+ * [X] [O] [O] [O]
+ */
+TEST(PiezasTest, tieVerticalVsHorizontal)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	ASSERT_EQ(testPiezas.gameState(), Blank);
+}
+
+// Tie horizontal x horizontal
+/*
+ * [X] [O] [X] [O]
+ * [O] [O] [O] [O]
+ * [X] [X] [X] [X]
+ */
+TEST(PiezasTest, tieHorizontalVsHorizontal)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	ASSERT_EQ(testPiezas.gameState(), Blank);
+}
+
+// Tie horizontal x vertical
+/*
+ * [O] [X] [O] [O]
+ * [X] [O] [X] [O]
+ * [X] [X] [X] [O]
+ */
+TEST(PiezasTest, tieHorizontalVsVertical)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(2);
+	testPiezas.dropPiece(3);
+	testPiezas.dropPiece(1);
+	testPiezas.dropPiece(2);
+	ASSERT_EQ(testPiezas.gameState(), Blank);
+}
