@@ -22,31 +22,31 @@ TEST(PiezasTest, sanityCheck)
 TEST(PiezasTest, pieceAtBlank)
 {
 	Piezas testPiezas;
-	ASSERT_EQUAL(testPiezas.pieceAt(0, 0), Blank);
+	ASSERT_EQ(testPiezas.pieceAt(0, 0), Blank);
 }
 
 TEST(PiezasTest, pieceAtIllegalRowUnder)
 {
 	Piezas testPiezas;
-	ASSERT_EQUAL(testPiezas.pieceAt(-1, 0), Invalid);
+	ASSERT_EQ(testPiezas.pieceAt(-1, 0), Invalid);
 }
 
 TEST(PiezasTest, pieceAtIllegalRowOver)
 {
 	Piezas testPiezas;
-	ASSERT_EQUAL(testPiezas.pieceAt(3, 0), Invalid);
+	ASSERT_EQ(testPiezas.pieceAt(3, 0), Invalid);
 }
 
 TEST(PiezasTest, pieceAtIllegalColumnUnder)
 {
 	Piezas testPiezas;
-	ASSERT_EQUAL(testPiezas.pieceAt(0, -1), Invalid);
+	ASSERT_EQ(testPiezas.pieceAt(0, -1), Invalid);
 }
 
 TEST(PiezasTest, pieceAtIllegalColumnOver)
 {
 	Piezas testPiezas;
-	ASSERT_EQUAL(testPiezas.pieceAt(0, 4), Invalid);
+	ASSERT_EQ(testPiezas.pieceAt(0, 4), Invalid);
 }
 
 TEST(PiezasTest, constructorEmptyBoard)
