@@ -83,3 +83,69 @@ TEST(PiezasTest, resetBlankBoard)
 	}
 	ASSERT_TRUE(allBlank);
 }
+
+TEST(PiezasTest, dropPieceInvalidUnder)
+{
+	Piezas testPiezas;
+	ASSERT_EQ(testPiezas.dropPiece(-1), Invalid);
+}
+
+TEST(PiezasTest, dropPieceInvalidOver)
+{
+	Piezas testPiezas;
+	ASSERT_EQ(testPiezas.dropPiece(4), Invalid);
+}
+
+TEST(PiezasTest, dropPieceFirstRowReturn)
+{
+	Piezas testPiezas;
+	ASSERT_EQ(testPiezas.dropPiece(0), X);
+}
+
+TEST(PiezasTest, dropPieceFirstRowBoardCheck)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	ASSERT_EQ(testPiezas.pieceAt(0, 0), X);
+}
+
+TEST(PiezasTest, dropPieceSecondRowReturn)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	ASSERT_EQ(testPiezas.dropPiece(0), O);
+}
+
+TEST(PiezasTest, dropPieceSecondRowBoardCheck)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	ASSERT_EQ(testPiezas.pieceAt(1, 0), O);
+}
+
+TEST(PiezasTest, dropPieceThirdRowReturn)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	ASSERT_EQ(testPiezas.dropPiece(0), X);
+}
+
+TEST(PiezasTest, dropPieceThirdRowBoardCheck)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	ASSERT_EQ(testPiezas.pieceAt(2, 0), X);
+}
+
+TEST(PiezasTest, dropPieceOverflow)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	ASSERT_EQ(testPiezas.dropPiece(0), Blank);
+}
