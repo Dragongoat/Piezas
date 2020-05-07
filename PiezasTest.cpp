@@ -96,6 +96,13 @@ TEST(PiezasTest, dropPieceInvalidOver)
 	ASSERT_EQ(testPiezas.dropPiece(4), Invalid);
 }
 
+TEST(PiezasTest, dropPieceInvalidUnderOTurn)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	ASSERT_EQ(testPiezas.dropPiece(-1), Invalid);
+}
+
 TEST(PiezasTest, dropPieceFirstRowReturn)
 {
 	Piezas testPiezas;
@@ -148,4 +155,21 @@ TEST(PiezasTest, dropPieceOverflow)
 	testPiezas.dropPiece(0);
 	testPiezas.dropPiece(0);
 	ASSERT_EQ(testPiezas.dropPiece(0), Blank);
+}
+
+TEST(PiezasTest, dropPieceOverflowXTurn)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(0);
+	testPiezas.dropPiece(1);
+	ASSERT_EQ(testPiezas.dropPiece(0), Blank);
+}
+
+TEST(PiezasTest, gameStateGameNotOver)
+{
+	Piezas testPiezas;
+	testPiezas.dropPiece(0);
+	ASSER_EQ(testPiezas.gameState(), Invalid);
 }
