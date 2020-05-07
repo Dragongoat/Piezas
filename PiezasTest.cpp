@@ -55,8 +55,26 @@ TEST(PiezasTest, constructorEmptyBoard)
 	bool allBlank = true;
 	int rows = 3;
 	int columns = 4;
-	for (unsigned int i = 0; i < rows; i++) {
-		for (unsigned int j = 0; j < columns; j++) {
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			if (testPiezas.pieceAt(i, j) != Blank) {
+				allBlank = false;
+				break;
+			}
+		}
+	}
+	ASSERT_TRUE(allBlank);
+}
+
+TEST(PiezasTest, resetBlankBoard)
+{
+	Piezas testPiezas;
+	testPiezas.reset();
+	bool allBlank = true;
+	int rows = 3;
+	int columns = 4;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
 			if (testPiezas.pieceAt(i, j) != Blank) {
 				allBlank = false;
 				break;

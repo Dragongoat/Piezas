@@ -22,9 +22,9 @@
 **/
 Piezas::Piezas()
 {
-    for (unsigned int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) {
         std::vector<Piece> tempRow;
-        for (unsigned int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++) {
             tempRow.push_back(Blank);
         }
         board.push_back(tempRow);
@@ -39,6 +39,11 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    for (unsigned int i = 0; i < board.size(); i++) {
+        for (unsigned int j = 0; j < board[i].size(); j++) {
+            board[i][j] = Blank;
+        }
+    }
 }
 
 /**
